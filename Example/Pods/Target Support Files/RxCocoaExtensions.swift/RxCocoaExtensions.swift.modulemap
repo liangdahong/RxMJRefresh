@@ -1,0 +1,6 @@
+framework module RxCocoaExtensions {
+  umbrella header "RxCocoaExtensions.swift-umbrella.h"
+
+  export *
+  module * { export * }
+}

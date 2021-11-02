@@ -1,0 +1,16 @@
+use_frameworks!
+
+target 'RxMJRefresh_Example' do
+  
+  pod 'RxMJRefresh', :path => '../'
+  pod 'NSObject+Rx'
+  pod 'RHSwiftExtensions', :git => 'https://github.com/Boy-Rong/RHSwiftExtensions.git'
+  pod 'RxSwiftExtensions.swift', :git => 'https://github.com/Boy-Rong/RxSwiftExtensions.git'
+  pod 'RxCocoaExtensions.swift', :git => 'https://github.com/Boy-Rong/RxCocoaExtensions.git'
+  
+  target 'RxMJRefresh_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

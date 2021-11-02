@@ -1,0 +1,69 @@
+PODS:
+  - MJRefresh (3.5.0)
+  - "NSObject+Rx (5.2.1)":
+    - RxSwift (~> 6.0)
+  - RHSwiftExtensions (1.2.9)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxCocoaExtensions.swift (0.2.0):
+    - RxCocoa (~> 6.0)
+  - RxMJRefresh (0.1.0):
+    - MJRefresh
+    - RxCocoa
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
+  - RxSwiftExtensions.swift (0.2.6):
+    - RxSwift (~> 6.0)
+
+DEPENDENCIES:
+  - "NSObject+Rx"
+  - RHSwiftExtensions (from `https://github.com/Boy-Rong/RHSwiftExtensions.git`)
+  - RxCocoaExtensions.swift (from `https://github.com/Boy-Rong/RxCocoaExtensions.git`)
+  - RxMJRefresh (from `../`)
+  - RxSwiftExtensions.swift (from `https://github.com/Boy-Rong/RxSwiftExtensions.git`)
+
+SPEC REPOS:
+  trunk:
+    - MJRefresh
+    - "NSObject+Rx"
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+
+EXTERNAL SOURCES:
+  RHSwiftExtensions:
+    :git: https://github.com/Boy-Rong/RHSwiftExtensions.git
+  RxCocoaExtensions.swift:
+    :git: https://github.com/Boy-Rong/RxCocoaExtensions.git
+  RxMJRefresh:
+    :path: "../"
+  RxSwiftExtensions.swift:
+    :git: https://github.com/Boy-Rong/RxSwiftExtensions.git
+
+CHECKOUT OPTIONS:
+  RHSwiftExtensions:
+    :commit: 2b83826df401efac023390e969094e627105a13c
+    :git: https://github.com/Boy-Rong/RHSwiftExtensions.git
+  RxCocoaExtensions.swift:
+    :commit: 3707b695dab46fbb5f9c4b4bafdfd53d63523f86
+    :git: https://github.com/Boy-Rong/RxCocoaExtensions.git
+  RxSwiftExtensions.swift:
+    :commit: f10c95651dd7e4de436322c03d33e214d8f59926
+    :git: https://github.com/Boy-Rong/RxSwiftExtensions.git
+
+SPEC CHECKSUMS:
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  "NSObject+Rx": 49ffbf55ad0bbc29a44547db63a9e33caf0c5d60
+  RHSwiftExtensions: 8fa7bfedbcdd5f7f0175509ca5f7b80694ce94e2
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxCocoaExtensions.swift: 0618228240cc394277edb68c04cb4370694e55cd
+  RxMJRefresh: 89e7a5a1bd1d5025dd0251f5104b1749d2b16f9b
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  RxSwiftExtensions.swift: c419582e9e1bdf2534e8aab3a65bc685e4d97875
+
+PODFILE CHECKSUM: 762200f1dea8baab74c114a5752af0deb50fad0e
+
+COCOAPODS: 1.11.2

@@ -1,0 +1,6 @@
+framework module RHSwiftExtensions {
+  umbrella header "RHSwiftExtensions-umbrella.h"
+
+  export *
+  module * { export * }
+}
