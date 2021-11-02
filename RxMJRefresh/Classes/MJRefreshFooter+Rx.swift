@@ -23,7 +23,7 @@ import RxSwift
 import RxCocoa
 import class MJRefresh.MJRefreshFooter
 
-public extension Reactive where Base: MJRefreshFooter {
+public extension Reactive where Base: Viewable {
     
     enum FooterStatus {
         case begin
@@ -32,26 +32,28 @@ public extension Reactive where Base: MJRefreshFooter {
         case resetNoMoreData
     }
     
-    /// 设置【上拉加载更多组件】状态
-    var state: Binder<FooterStatus> {
+    var footerState: Binder<FooterStatus> {
         Binder(base) { _, state in self.state(state) }
     }
     
-    /// 设置【上拉加载更多组件】状态
-    func state(state: FooterStatus) -> Binder<()> {
+    func footerState(state: FooterStatus) -> Binder<()> {
         Binder(base) { _, _ in self.state(state) }
     }
+}
+
+private extension Reactive where Base: Viewable {
     
-    private func state(_ state: FooterStatus) {
+    func state(_ state: FooterStatus) {
+        guard let footer = base.contentScrollView.mj_footer else { return }
         switch state {
         case .begin:
-            base.beginRefreshing()
+            footer.beginRefreshing()
         case .end:
-            base.endRefreshing()
+            footer.endRefreshing()
         case .noMoreData:
-            base.endRefreshingWithNoMoreData()
+            footer.endRefreshingWithNoMoreData()
         case .resetNoMoreData:
-            base.resetNoMoreData()
+            footer.resetNoMoreData()
         }
     }
 }

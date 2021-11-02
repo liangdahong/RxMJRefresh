@@ -21,35 +21,35 @@ pod 'RxMJRefresh'
 ```
 
 ```swift
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { })
-        tableView.mj_footer = MJRefreshBackStateFooter(refreshingBlock: { })
+        tableView.mj_header = MJRefreshNormalHeader()
+        tableView.mj_footer = MJRefreshBackStateFooter()
         
         rx.viewWillAppear.take(1)
-            .bind(to: tableView.mj_header!.rx.state(state: .begin))
+            .bind(to: tableView.rx.headerState(state: .begin))
             .disposed(by: rx.disposeBag)
         
         headerRefresh.rx.tap
-            .bind(to: tableView.mj_header!.rx.state(state: .begin))
+            .bind(to: tableView.rx.headerState(state: .begin))
             .disposed(by: rx.disposeBag)
         
         headerStopRefresh.rx.tap
-            .bind(to: tableView.mj_header!.rx.state(state: .end))
+            .bind(to: tableView.rx.headerState(state: .end))
             .disposed(by: rx.disposeBag)
         
         footerRefresh.rx.tap
-            .bind(to: tableView.mj_footer!.rx.state(state: .begin))
+            .bind(to: tableView.rx.footerState(state: .begin))
             .disposed(by: rx.disposeBag)
         
         footerStopRefresh.rx.tap
-            .bind(to: tableView.mj_footer!.rx.state(state: .end))
+            .bind(to: tableView.rx.footerState(state: .end))
             .disposed(by: rx.disposeBag)
         
         footerNoDataRefresh.rx.tap
-            .bind(to: tableView.mj_footer!.rx.state(state: .noMoreData))
+            .bind(to: tableView.rx.footerState(state: .noMoreData))
             .disposed(by: rx.disposeBag)
         
         footerRestMoreDataRefresh.rx.tap
-            .bind(to: tableView.mj_footer!.rx.state(state: .resetNoMoreData))
+            .bind(to: tableView.rx.footerState(state: .resetNoMoreData))
             .disposed(by: rx.disposeBag)
         
         URLSession.shared.rx
@@ -58,21 +58,26 @@ pod 'RxMJRefresh'
             .bind(to: networkingLabel.rx.text)
             .disposed(by: rx.disposeBag)
         
-        tableView.mj_header?.rx.refreshing
+        tableView.rx.headerRefreshing
             .subscribe(onNext: { _ in
                 print("触发了下拉刷新 👇🏻")
             })
             .disposed(by: rx.disposeBag)
         
-        tableView.mj_footer?.rx.refreshing
+        tableView.rx.footerRefreshing
             .subscribe(onNext: { _ in
                 print("触发了上拉刷新 👆🏻 ")
             })
             .disposed(by: rx.disposeBag)
         
-        tableView.mj_header?.rx.refreshing
-            .bind(to: tableView.mj_header!.rx.state(state: .end),
-                  tableView.mj_footer!.rx.state(state: .begin))
+        tableView.rx.headerRefreshing
+            .map { "下拉刷新" }
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: rx.disposeBag)
+        
+        tableView.rx.footerRefreshing
+            .map { "上拉刷新" }
+            .bind(to: navigationItem.rx.title)
             .disposed(by: rx.disposeBag)
 ```
 

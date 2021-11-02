@@ -18,36 +18,23 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //    THE SOFTWARE.
 
-import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
-import class MJRefresh.MJRefreshHeader
+import WebKit
 
-public extension Reactive where Base: Viewable {
-    
-    enum HeaderStatus {
-        case begin
-        case end
-    }
-    
-    var headerState: Binder<HeaderStatus> {
-        Binder(base) { _, state in self.state(state) }
-    }
-    
-    func headerState(state: HeaderStatus) -> Binder<()> {
-        Binder(base) { _, _ in self.state(state) }
-    }
+public protocol Viewable: class {
+    var contentScrollView: UIScrollView { get }
 }
 
-private extension Reactive where Base: Viewable {
-    
-    func state(_ state: HeaderStatus) {
-        guard let header = base.contentScrollView.mj_header else { return }
-        switch state {
-        case .begin:
-            header.beginRefreshing()
-        case .end:
-            header.endRefreshing()
-        }
-    }
+extension UIScrollView: Viewable {
+    public var contentScrollView: UIScrollView { self }
+}
+
+extension UIWebView: Viewable {
+    public var contentScrollView: UIScrollView { scrollView }
+}
+
+extension WKWebView: Viewable {
+    public var contentScrollView: UIScrollView { scrollView }
 }
